@@ -1,3 +1,5 @@
+import { ADD_TASK } from '../actions';
+
 const initialState = {
     tasks: [
         {task:'Take over the world', id: Date.now(), completed: false}, 
@@ -8,6 +10,11 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
+        case ADD_TASK:
+            return {
+                ...state,
+                tasks: action.payload,
+            }
         default:
             return state;
     }

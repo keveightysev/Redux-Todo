@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
 
 
 class Todo extends Component {
@@ -8,6 +9,7 @@ class Todo extends Component {
     return (
       <>
         <TaskForm />
+        <TaskList />
       </>
     );
   }

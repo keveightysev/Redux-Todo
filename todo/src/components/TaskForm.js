@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addTask } from '../actions';
 
 class TaskForm extends React.Component {
     state = {
@@ -12,12 +13,23 @@ class TaskForm extends React.Component {
         });
     }
 
+    handleSubmit = e => {
+        e.preventDefault();
+        const newTask = {
+            task: this.state.task,
+            id: Date.now(),
+            completed: false,
+        };
+        const tasks = [...this.props.tasks, newTask];
+        this.props.addTask(tasks);
+    }
+
     render() {
         return (
             <>
-            <form action="">
+            <form>
             <input type="text" value={this.state.task} onChange={this.handleChange} name="task" />
-            <button>Add Task</button>
+            <button onClick={this.handleSubmit}>Add Task</button>
             </form>
             <button>Clear Completed</button>
             </>
@@ -29,6 +41,4 @@ const mapStateToProps = state => {
     return { ...state };
 };
 
-
-
-export default connect(mapStateToProps,{})(TaskForm);
+export default connect(mapStateToProps,{ addTask })(TaskForm);
