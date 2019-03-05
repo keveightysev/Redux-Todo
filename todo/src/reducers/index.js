@@ -1,4 +1,4 @@
-import { ADD_TASK } from '../actions';
+import { ADD_TASK, MARK_COMPLETED } from '../actions';
 
 const initialState = {
     tasks: [
@@ -14,6 +14,16 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: action.payload,
+            }
+        case MARK_COMPLETED:
+            return {
+                ...state,
+                tasks: state.tasks.map(task => {
+                    if (task.id === action.payload) {
+                        task.completed = !task.completed;
+                    }
+                    return task;
+                }),
             }
         default:
             return state;
