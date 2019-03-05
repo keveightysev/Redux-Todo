@@ -6,9 +6,19 @@ import { Provider } from 'react-redux';
 
 import { reducer } from './reducers';
 
+import { loadState, saveState } from './localStorage';
+import { throttle } from 'lodash';
+
 import Todo from './Todo';
 
-const store = createStore(reducer);
+const persistedState = loadState(); 
+const store = createStore(reducer, persistedState);
+
+store.subscribe(throttle(() => {
+    saveState({
+        tasks: store.getState().tasks
+    });
+}, 1000));
 
 ReactDOM.render(<Provider store={store}><Todo /></Provider>, document.getElementById('root'));
 
