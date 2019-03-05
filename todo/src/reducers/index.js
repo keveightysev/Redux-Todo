@@ -11,9 +11,14 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_TASK:
+            const newTask = {
+                task: action.payload,
+                id: Date.now(),
+                completed: false,
+            }
             return {
                 ...state,
-                tasks: action.payload,
+                tasks: [...state.tasks, newTask],
             }
         case MARK_COMPLETED:
             return {

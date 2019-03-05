@@ -3,10 +3,10 @@ export const MARK_COMPLETED = "MARK_COMPLETED";
 export const DELETE_TASK = "DELETE TASK";
 export const EDIT_TASK = "EDIT TASK";
 
-export const addTask = tasks => {
+export const addTask = task => {
     return {
         type: ADD_TASK,
-        payload: tasks,
+        payload: task,
     };
 };
 

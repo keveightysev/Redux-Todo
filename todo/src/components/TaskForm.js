@@ -15,13 +15,8 @@ class TaskForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const newTask = {
-            task: this.state.task,
-            id: Date.now(),
-            completed: false,
-        };
-        const tasks = [...this.props.tasks, newTask];
-        this.props.addTask(tasks);
+        this.props.addTask(this.state.task);
+        this.setState({ task: '' })
     }
 
     render() {
