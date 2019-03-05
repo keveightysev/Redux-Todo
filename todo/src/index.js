@@ -21,5 +21,3 @@ store.subscribe(throttle(() => {
 }, 1000));
 
 ReactDOM.render(<Provider store={store}><Todo /></Provider>, document.getElementById('root'));
-
-
