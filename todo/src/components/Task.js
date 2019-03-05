@@ -7,6 +7,7 @@ class Task extends React.Component {
     state = {
         task: this.props.task.task,
         id: this.props.task.id,
+        completed: this.props.task.completed,
         editClicked: false,
     }
 
@@ -52,14 +53,14 @@ class Task extends React.Component {
                 }
                     
             </p>
-            <button onClick={this.editButton}>Edit Task</button>
-            <button onClick={e => this.markCompleted(e, this.state.id)}>Mark Completed</button>
+            {!this.state.completed ? <button onClick={this.editButton}>Edit Task</button> : null}
+            <button onClick={e => this.markCompleted(e, this.state.id)}>{!this.state.completed ? <span>Mark Completed</span> : <span>Re-Open Task</span>}</button>
             <button onClick={e => this.deleteTask(e, this.state.id)}>Delete Task</button>
             </>
         );
     }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ({});
 
 export default connect(mapStateToProps, { markCompleted, deleteTask, editTask })(Task);

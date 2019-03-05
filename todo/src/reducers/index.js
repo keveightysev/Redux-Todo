@@ -1,4 +1,8 @@
-import { ADD_TASK, MARK_COMPLETED, DELETE_TASK, EDIT_TASK } from '../actions';
+import { ADD_TASK, 
+    MARK_COMPLETED, 
+    DELETE_TASK, 
+    EDIT_TASK,
+    CLEAR_COMPLETED, } from '../actions';
 
 const initialState = {
     tasks: [
@@ -35,7 +39,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 tasks: state.tasks.filter(task => task.id !== action.payload)
             }
-        case EDIT_TASK: {
+        case EDIT_TASK:
             return {
                 ...state,
                 tasks: state.tasks.map(task => {
@@ -45,7 +49,11 @@ export const reducer = (state = initialState, action) => {
                     return task;
                 })
             }
-        }
+        case CLEAR_COMPLETED:
+            return {
+                state,
+                tasks: state.tasks.filter(task => task.completed === false)
+            }
         default:
             return state;
     }

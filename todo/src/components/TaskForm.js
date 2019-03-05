@@ -26,7 +26,6 @@ class TaskForm extends React.Component {
             <input type="text" value={this.state.task} onChange={this.handleChange} name="task" />
             <button onClick={this.handleSubmit}>Add Task</button>
             </form>
-            <button>Clear Completed</button>
             </>
         );
     }

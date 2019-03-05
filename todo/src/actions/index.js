@@ -1,7 +1,8 @@
 export const ADD_TASK = "ADD_TASK";
 export const MARK_COMPLETED = "MARK_COMPLETED";
-export const DELETE_TASK = "DELETE TASK";
-export const EDIT_TASK = "EDIT TASK";
+export const DELETE_TASK = "DELETE_TASK";
+export const EDIT_TASK = "EDIT_TASK";
+export const CLEAR_COMPLETED = "CLEAR_COMPLETED";
 
 export const addTask = task => {
     return {
@@ -31,5 +32,11 @@ export const editTask = (id, task) => {
             id: id,
             task: task,
         },
+    }
+}
+
+export const clearCompleted = () => {
+    return {
+        type: CLEAR_COMPLETED,
     }
 }
