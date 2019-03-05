@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { markCompleted } from '../actions';
+import { markCompleted, deleteTask } from '../actions';
 
 class Task extends React.Component {
 
@@ -11,8 +11,13 @@ class Task extends React.Component {
 
     markCompleted = (e, id) => {
         e.preventDefault();
-        console.log(this.props.markCompleted);
         this.props.markCompleted(id);
+    }
+
+    deleteTask = (e, id) => {
+        e.preventDefault();
+        console.log(`${id} from onClick`)
+        this.props.deleteTask(id);
     }
 
     render() {
@@ -20,7 +25,7 @@ class Task extends React.Component {
             <>
             <p>{this.state.task}</p>
             <button onClick={e => this.markCompleted(e, this.state.id)}>Mark Completed</button>
-            <button>Delete Task</button>
+            <button onClick={e => this.deleteTask(e, this.state.id)}>Delete Task</button>
             </>
         );
     }
@@ -28,4 +33,4 @@ class Task extends React.Component {
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { markCompleted })(Task);
+export default connect(mapStateToProps, { markCompleted, deleteTask })(Task);

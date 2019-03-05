@@ -1,5 +1,6 @@
 export const ADD_TASK = "ADD_TASK";
 export const MARK_COMPLETED = "MARK_COMPLETED";
+export const DELETE_TASK = "DELETE TASK";
 
 export const addTask = tasks => {
     return {
@@ -9,9 +10,15 @@ export const addTask = tasks => {
 };
 
 export const markCompleted = id => {
-    console.log(`${id} from action`);
     return {
         type: MARK_COMPLETED,
         payload: id,
     };
 };
+
+export const deleteTask = id => {
+    return {
+        type: DELETE_TASK,
+        payload: id,
+    }
+}

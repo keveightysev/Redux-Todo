@@ -1,4 +1,4 @@
-import { ADD_TASK, MARK_COMPLETED } from '../actions';
+import { ADD_TASK, MARK_COMPLETED, DELETE_TASK } from '../actions';
 
 const initialState = {
     tasks: [
@@ -24,6 +24,12 @@ export const reducer = (state = initialState, action) => {
                     }
                     return task;
                 }),
+            }
+        case DELETE_TASK:
+            console.log(`${action.payload}`)
+            return {
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload)
             }
         default:
             return state;
